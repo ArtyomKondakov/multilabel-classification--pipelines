@@ -1,6 +1,6 @@
 project_name: 'PosterClassifier'
 experiment_name: 'exp1'
-num_classes: 24
+num_classes: 17
 n_epochs: 10
 accelerator: 'gpu'
 device: 0
@@ -28,9 +28,9 @@ losses:
     loss_kwargs: {}
 
 data_config:
-  data_path: '/home/sergey/sdb3/datasets/Multi_Label_dataset/'
-  batch_size: 256
-  n_workers: 4
+  data_path: './data'
+  batch_size: 32
+  n_workers: 1
   train_size: 0.8
   width: 224
   height: 224

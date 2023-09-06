@@ -24,9 +24,8 @@ class PosterDataset(Dataset):
     def __getitem__(self, idx: int):
         row = self.df.iloc[idx]
 
-        image_path = os.path.join(self.image_folder, f'{row.Id}.jpg')
-        labels = np.array(row.drop(['Id']), dtype='float32')
-
+        image_path = os.path.join(self.image_folder, f'{row.image_name}.jpg')
+        labels = np.array(row.values[1:], dtype='float32')
         image = cv2.imread(image_path)
         image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 

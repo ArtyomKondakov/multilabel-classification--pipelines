@@ -21,11 +21,12 @@ class PosterDM(LightningDataModule):
         self._data_path = config.data_path
         self._train_transforms = get_transforms(width=config.width, height=config.height)
         self._valid_transforms = get_transforms(width=config.width, height=config.height, augmentations=False)
-        self._image_folder = os.path.join(config.data_path, 'Images')
+        self._image_folder = os.path.join(config.data_path, 'train-jpg')
 
         self.train_dataset: Optional[Dataset] = None
         self.valid_dataset: Optional[Dataset] = None
         self.test_dataset: Optional[Dataset] = None
+        
 
     def prepare_data(self):
         split_and_save_datasets(self._data_path, self._train_size)
@@ -85,10 +86,9 @@ class PosterDM(LightningDataModule):
 
 
 def split_and_save_datasets(data_path: str, train_fraction: float = 0.8):
-    df = pd.read_csv(os.path.join(data_path, 'train.csv'))
+    df = pd.read_csv(os.path.join(data_path, 'train_classes.csv'))
     logging.info(f'Original dataset: {len(df)}')
     df = df.drop_duplicates()
-    df = df.drop(['Genre', 'Reality-TV'], axis=1)
     logging.info(f'Final dataset: {len(df)}')
 
     train_df, valid_df, test_df = stratify_shuffle_split_subsets(df, train_fraction=train_fraction)

@@ -12,7 +12,7 @@ def stratify_shuffle_split_subsets(
 ) -> Tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame]:
     """Разбиение датасета на train/valid/test."""
 
-    x_columns = ['Id']
+    x_columns = ['image_name']
     y_columns = list(annotation.select_dtypes('int').columns)
 
     all_x = annotation[x_columns].to_numpy()

@@ -1,14 +1,14 @@
-project_name: 'PosterClassifier'
-experiment_name: 'exp1'
+project_name: 'hw1_modeling'
+experiment_name: 'efficientnet_b2'
 num_classes: 17
-n_epochs: 10
+n_epochs: 100
 accelerator: 'gpu'
 device: 0
 monitor_metric: 'val_f1'
 monitor_mode: 'max'
 
 model_kwargs:
-  model_name: 'resnet18'
+  model_name: 'efficientnet_b2'
   pretrained: true
 
 optimizer: 'torch.optim.AdamW'

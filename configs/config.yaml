@@ -1,5 +1,5 @@
 project_name: 'hw1_modeling'
-experiment_name: 'efficientnet_b2'
+experiment_name: 'resnet101'
 num_classes: 17
 n_epochs: 100
 accelerator: 'gpu'
@@ -8,7 +8,7 @@ monitor_metric: 'val_f1'
 monitor_mode: 'max'
 
 model_kwargs:
-  model_name: 'efficientnet_b2'
+  model_name: 'resnet101'
   pretrained: true
 
 optimizer: 'torch.optim.AdamW'

@@ -1,3 +1,4 @@
+"""This configuration is for the Pipeline."""
 from typing import List
 
 from omegaconf import OmegaConf
@@ -5,6 +6,11 @@ from pydantic import BaseModel
 
 
 class LossConfig(BaseModel):
+    """Config for loss.
+
+    Args:
+        BaseModel (_type_): _description_
+    """
     name: str
     weight: float
     loss_fn: str
@@ -12,6 +18,11 @@ class LossConfig(BaseModel):
 
 
 class DataConfig(BaseModel):
+    """Config for data.
+
+    Args:
+        BaseModel (_type_): _description_
+    """
     data_path: str
     batch_size: int
     n_workers: int
@@ -21,6 +32,14 @@ class DataConfig(BaseModel):
 
 
 class Config(BaseModel):
+    """Config for exp.
+
+    Args:
+        BaseModel (_type_): _description_
+
+    Returns:
+        _type_: _description_
+    """
     project_name: str
     experiment_name: str
     data_config: DataConfig
@@ -39,5 +58,13 @@ class Config(BaseModel):
 
     @classmethod
     def from_yaml(cls, path: str) -> 'Config':
+        """Parse data from yaml.
+
+        Args:
+            path (str): path to config
+
+        Returns:
+            Config: Config
+        """
         cfg = OmegaConf.to_container(OmegaConf.load(path), resolve=True)
         return cls(**cfg)

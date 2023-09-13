@@ -1,0 +1,7 @@
+[core]
+    remote = kondakov
+[cache]
+    type = "hardlink,symlink"
+['remote "kondakov"']
+    url = ssh://91.206.15.25/home/a.kondakov/dvc_files
+    user = a.kondakov

@@ -40,6 +40,7 @@ class Config(BaseModel):
     Returns:
         _type_: _description_
     """
+    log_every_n_steps: int
     project_name: str
     experiment_name: str
     data_config: DataConfig

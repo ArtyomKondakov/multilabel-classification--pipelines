@@ -2,6 +2,7 @@ project_name: 'test'
 experiment_name: 'resnet101'
 num_classes: 17
 n_epochs: 100
+log_every_n_steps: 30
 accelerator: 'gpu'
 device: 0
 monitor_metric: 'val_f1'

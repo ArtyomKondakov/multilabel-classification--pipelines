@@ -1,3 +1,4 @@
+"""losses."""
 from dataclasses import dataclass
 from typing import List
 
@@ -8,13 +9,22 @@ from src.utils import load_object
 
 
 @dataclass
-class Loss:
+class Loss:  # noqa: WPS306
+    """class Loss."""
     name: str
     weight: float
     loss: nn.Module
 
 
 def get_losses(losses_cfg: List[LossConfig]) -> List[Loss]:
+    """For get losses.
+
+    Args:
+        losses_cfg (List[LossConfig]): losses config.
+
+    Returns:
+        List[Loss]: loss.
+    """
     return [
         Loss(
             name=loss_cfg.name,

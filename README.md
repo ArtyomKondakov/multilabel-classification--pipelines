@@ -50,7 +50,15 @@ PYTHONPATH=. python src/train.py configs/config.yaml
 ```
 ### Эксперименты 
 https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/f044b780187d4aada30ed5d8d70f583b/output/execution
- 
-### Инеренс
+
+|  | f1 | precision | recall | link to exp |
+| --- | --- | --- | --- | --- |
+| resnet18 | 0.59 | 0.68 | 0.56 | [Ссылка] (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/f044b780187d4aada30ed5d8d70f583b/output/execution) |
+| resnet34 | 0.61 | 0.68 | 0.57 | [Ссылка] (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/22ea7d71b0b645bdbe6e2121a5a6966c/output/execution) |
+| resnet50 | 0.61 | 0.68 | 0.58 | [Ссылка] (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/559be76ef2dc4ce3a02f148a6f54ca64/output/execution) |
+| efficientnet_b0 | 0.62 | 0.70 | 0.59 | [Ссылка] (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/e57eceb101e64013a711784f294ce246/output/execution) |
+| efficientnet_b1 | 0.65 | 0.73 | 0.62 | [Ссылка]  (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/d13ba66d196342079fbf05e1c6bef89c/output/execution) |
+| efficientnet_b2 | 0.63 | 0.73 | 0.60 | [Ссылка] (https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/630b5843a30e49e880b9b12a6d5f94f6/output/execution) |
+### Инференс
 
 Посмотреть результаты работы обученной сети можно посмотреть в [тетрадке](notebooks/inference.ipynb).

@@ -41,6 +41,39 @@
 
 5. Настраиваем [config.yaml](configs/config.yaml) под себя.
 
+6. Подкючаем DVC
+    - необходимо сгенерировать ssh-key командой [ссылка](https://selectel.ru/blog/tutorials/how-to-generate-ssh)
+    ```
+    ssh-keygen -t rsa
+    ```
+    - Далее нужно добавить публичную часть ключа на сервер:
+    ```
+    ssh-copy-id -i /path/to/your/id_rsa.pub <staging_username>@91.206.15.25
+    ```
+    Теперь можно проверить, что стало пускать без пароля
+
+    - нициализировать dvc в вашем репозитории:
+
+    ```
+    #DVC_REMOTE_NAME -- просто то, как вы хотите назвать хост для dvc
+    #USERNAME -- username для входа на сервер
+    #STAGING_HOST - адрес сервера
+
+    dvc remote add --default $(DVC_REMOTE_NAME) ssh://91.206.15.25/home/a.kondakov/dvc_files
+    dvc remote modify $(DVC_REMOTE_NAME) user $(STAGING_USERNAME)
+    dvc config cache.type hardlink,symlink
+    ```
+    Если будет ругаться на то что нет прав на доступ, можно попытаться еще дополнительно указать ему путь до приватного ключа
+    ```
+    dvc remote modify $(DVC_REMOTE_NAME) keyfile /path/to/your/private_key (пример ~/.ssh/id_rsa)
+    ```
+    Для того чтобы загрузить модель с серевра нужно сделать 
+    ```
+    dvc pull --remote DVC_REMOTE_NAME
+    ```
+    Если вы всё сделали правильно, то должна появится папка model с model.ckpt
+    Для преключения между версями делайте git checkout по комитам 'add version_model'
+
 ### Обучение
 
 Запуск тренировки:
@@ -49,7 +82,6 @@
 PYTHONPATH=. python src/train.py configs/config.yaml
 ```
 ### Эксперименты 
-https://app.clear.ml/projects/7970d8b03a9144b5a1baa2331d3f79c1/experiments/f044b780187d4aada30ed5d8d70f583b/output/execution
 
 |  | f1 | precision | recall | link to exp |
 | --- | --- | --- | --- | --- |

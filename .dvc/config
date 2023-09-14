@@ -1,17 +1,5 @@
-[core]
-    remote = r1
 [cache]
     type = "hardlink,symlink"
 ['remote "kondakov"']
     url = ssh://91.206.15.25/home/a.kondakov/dvc_files
     user = a.kondakov
-['remote "kondakov_hw1"']
-    url = ssh://91.206.15.25/home/a.kondakov/dvc_files
-    user = a.kondakov
-    keyfile = ../.ssh/id_rsa.pub
-['remote "kondakov_hw_1"']
-    url = ssh://91.206.15.25/home/a.kondakov/dvc_files
-    user = a.kondakov
-    keyfile = ../.ssh/id_rsa.pub
-['remote "r1"']
-    url = ssh://91.206.15.25/home/a.kondakov/dvc_files

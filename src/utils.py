@@ -21,12 +21,12 @@ def load_object(obj_path: str, def_obj_path: str = '') -> Any:
     obj_name = obj_path_list[0]
     module_obj = importlib.import_module(obj_path)
 
-    has = hasattr(module_obj, obj_name)  # noqa: WPS421
-    if not has:
+    try:
+        return getattr(module_obj, obj_name)
+    except AttributeError:
         raise AttributeError(
             'Object `{obj_name}` cannot be loaded from `{obj_path}`.'.format(
                 obj_name=obj_name,
                 obj_path=obj_path,
             ),
         )
-    return getattr(module_obj, obj_name)

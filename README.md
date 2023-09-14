@@ -26,7 +26,7 @@
 
     В активированном окружении:
     ```
-    pip install -r requirements.txt
+    make install_package
     ```
 
 3. Настройка ClearML
@@ -36,7 +36,7 @@
 
 4. Скаченный архив с данными положить в корень проекта и запустить:
     ```
-    python src/pars_data.py
+    make pars_data
     ```
 
 5. Настраиваем [config.yaml](configs/config.yaml) под себя.
@@ -73,13 +73,16 @@
     ```
     Если вы всё сделали правильно, то должна появится папка model с model.ckpt
     Для преключения между версями делайте git checkout по комитам 'add version_model'
-
+7. Запуск линтеров:
+    ```
+    make lint
+    ```
 ### Обучение
 
 Запуск тренировки:
 
 ```
-PYTHONPATH=. python src/train.py configs/config.yaml
+make train
 ```
 ### Эксперименты 
 

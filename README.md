@@ -1,5 +1,6 @@
 ## Задание № 1:
 Задание было выполнено в рамках курса от [deepschool](https://deepschool.ru).
+
 Необходимо решить задачу мультилейбл-классификации
 [Ссылка](https://www.kaggle.com/datasets/nikitarom/planets-dataset) на датасет
 
